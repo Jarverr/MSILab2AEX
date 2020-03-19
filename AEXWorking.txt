@@ -1,0 +1,20 @@
+AEX operator interpretuje chromos jako konkretny cykl kątów. Dziecko cyklu powstaje przez wybór alternatywnych kątów z pierwszego i drugiego rodzica z dodatkiem nieco losowych wyborów w wypadku niemożności (kiedy występuje niemożność?)
+
+Dla przykładów 2 rodzicow
+p1= (5 1 7 8 4 9 6 2 3), p2= (3 6 2 5 1 9 8 4 7)
+
+procedura startuje przez wybór kąta 5->1 od rodzica 1 jako pierwszy łuk więc dziecko inicjalizuje się jako
+c= (5 1 * * * * * * *),
+kolejny kąt jest z rodzica drugiego, dodany od 1 czyli 1 -> 9 czyli dziecko to
+c= (5 1 9 * * * * * *),
+kolejny kąt z p1 rozpoczyna się od 9 -> 6 więc dziecko  po dodaniu to teraz:
+c= (5 1 9 6 * * * * *),
+itd.
+c= (5 1 9 6 2 * * * *),
+c= (5 1 9 6 2 3 * * *),
+Teraz powinien być wybór z p2 ale taki wybór spowodowałby za wczesne zamknięcie pętli bo 3 -> 2 dla tego nieodwiedzany wierzchołek zostanie wybrany teraz loswo czyli np 7.
+c= (5 1 9 6 2 3 7 * *),
+teraz cała procedura wznawiana, czyli z p1 7 -> 8
+c= (5 1 9 6 2 3 7 8 *),
+c= (5 1 9 6 2 3 7 8 4). 
+Tak oto powstało komplente dziecko
